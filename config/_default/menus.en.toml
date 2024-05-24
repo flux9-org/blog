@@ -1,0 +1,12 @@
+# config/_default/menus.toml
+
+[[main]]
+  name = "Posts"
+  pageRef = "posts"
+  weight = 10
+
+[[main]]
+  identifier = "github2"
+  pre = "github"
+  url = "https://github.com/nunocoracao/blowfish"
+  weight = 40

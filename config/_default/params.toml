@@ -1,0 +1,10 @@
+[homepage]
+  showRecent = true
+  showRecentItems = 6
+  showMoreLink = true
+  showMoreLinkDest = "/posts"
+  cardView = true
+  cardViewScreenWidth = false
+
+[header]
+  layout = "fixed"

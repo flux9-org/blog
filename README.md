@@ -1,4 +1,4 @@
-# PulsarEdge Blog
+# Flux9 Blog
 Serve locally with hugo:
 
 ```

@@ -1,8 +1,8 @@
 ---
-title: "Neovim and Tmux Developer Setup for Platformio C/C++"
+title: "Neovim and Tmux Developer Setup for Platformio"
 date: 2024-08-16
 draft: false
-summary: "Neovim Developer Setup for Platformio C/C++"
+summary: "Neovim Developer Setup for Platformio"
 tags: ["developer_env"]
 ---
 
@@ -306,4 +306,4 @@ Then to go further with Tmux you can easily create new full windows(a set of pan
 ## Image
 An example image, can see some LSP errors present in dependencies(seems near unavoidable even with `clangd_xtensa`), and a bottom tmux pane where you can run bash or zsh shell commands:
 
-![example_image](assets/neovim_tmux_example.png)
+![example_image](../../../assets/neovim_tmux_example.png)

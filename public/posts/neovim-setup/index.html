@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth" data-default-appearance="light"
+  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  
+  <meta http-equiv="content-language" content="en" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>How I use Neovim and Tmux for Embedded Development &middot; Flux9</title>
+  <meta name="title" content="How I use Neovim and Tmux for Embedded Development &middot; Flux9" />
+  
+  <meta name="description" content="Neovim Developer Setup for Platformio" />
+  <meta name="keywords" content="developer_env, " />
+  
+  
+  <link rel="canonical" href="http://localhost:1313/posts/neovim-setup/" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.31c111aadc9a6d521aa91dbbff46d400e7a23001ddfb5d9d57f2f263f23bf71061963cb99ac78e9cc732b4a46ffdfcd07c5e85e78757c690094ddeb954a72ab3.css"
+    integrity="sha512-McERqtyabVIaqR27/0bUAOeiMAHd&#43;12dV/LyY/I79xBhljy5mseOnMcytKRv/fzQfF6F54dXxpAJTd65VKcqsw==" />
+  
+  
+  <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
+    integrity="sha512-UWoWdFvqWpvQERONJUzA/TlzzVXObhXz3sdj58fCx0SPj&#43;e1TMqBHLghsMfhLNFhyqzh3XlKw9NNQJN8vMnuEg=="></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.b3e22525a7c62c7b8e4c7c002546ab6498031635fa2d07802d593d476d7ab1262ec61b0cec0fe9f5653e1c9e6c256cbd0b66e5a8421b4f82a7bd2c1d5c901638.js"
+    integrity="sha512-s&#43;IlJafGLHuOTHwAJUarZJgDFjX6LQeALVk9R216sSYuxhsM7A/p9WU&#43;HJ5sJWy9C2blqEIbT4KnvSwdXJAWOA==" data-copy="" data-copied=""></script>
+  
+  
+  
+  <script src="/lib/zoom/zoom.min.37d2094687372da3f7343a221a470f6b8806f7891aa46a5a03966af7f0ebd38b9fe536cb154e6ad28f006d184b294525a7c4054b6bbb4be62d8b453b42db99bd.js" integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S&#43;Yti0U7QtuZvQ=="></script>
+  
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:url" content="http://localhost:1313/posts/neovim-setup/">
+  <meta property="og:site_name" content="Flux9">
+  <meta property="og:title" content="How I use Neovim and Tmux for Embedded Development">
+  <meta property="og:description" content="Neovim Developer Setup for Platformio">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-08-16T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-08-16T00:00:00+00:00">
+    <meta property="article:tag" content="Developer_env">
+    <meta property="og:image" content="http://localhost:1313/posts/neovim-setup/featured.png">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/posts/neovim-setup/featured.png">
+  <meta name="twitter:title" content="How I use Neovim and Tmux for Embedded Development">
+  <meta name="twitter:description" content="Neovim Developer Setup for Platformio">
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Posts",
+    "name": "How I use Neovim and Tmux for Embedded Development",
+    "headline": "How I use Neovim and Tmux for Embedded Development",
+    
+    "abstract": "Neovim Developer Setup for Platformio",
+    "inLanguage": "en",
+    "url" : "http:\/\/localhost:1313\/posts\/neovim-setup\/",
+    "author" : {
+      "@type": "Person",
+      "name": "Flux9"
+    },
+    "copyrightYear": "2024",
+    "dateCreated": "2024-08-16T00:00:00\u002b00:00",
+    "datePublished": "2024-08-16T00:00:00\u002b00:00",
+    
+    "dateModified": "2024-08-16T00:00:00\u002b00:00",
+    
+    "keywords": ["developer_env"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "1538"
+  }]
+  </script>
+
+
+  
+  
+  <meta name="author" content="Flux9" />
+  
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.b0dca576e87d7eaa5850ae4e61759c065786cdb6489d68fcc82240539eebd5da522bdb4fda085ffd245808c8fe2acb2516408eb774ef26b5f6015fc6737c0ea8.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj&#43;KsslFkCOt3TvJrX2AV/Gc3wOqA=="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  <meta name="theme-color"/>
+  
+  
+</head>
+<body
+  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32 scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+  <div id="the-top" class="absolute flex self-center">
+    <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+      href="#main-content"><span
+        class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>Skip to main content</a>
+  </div>
+  
+  
+  <div class="min-h-[148px]"></div>
+<div class="fixed inset-x-0 pl-[24px] pr-[24px]" style="z-index:100">
+  <div id="menu-blur" class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl shadow-2xl"></div>
+  <div class="relative max-w-[64rem] ml-auto mr-auto">
+    <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
+    class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
+    
+    <div class="flex flex-1 items-center justify-between">
+        <nav class="flex space-x-3">
+
+            
+            <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">Flux9</a>
+            
+
+        </nav>
+        <nav class="hidden md:flex items-center space-x-5 md:ml-12 h-12">
+
+            
+            
+            
+  <a href="/posts/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-base font-medium" title="">
+        Posts
+    </p>
+</a>
+
+
+
+            
+            
+  <a href="https://github.com/flux9-org"  target="_blank"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <span >
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+
+    </span>
+    
+    <p class="text-base font-medium" title="">
+        
+    </p>
+</a>
+
+
+
+            
+            
+
+            
+
+
+            
+            <button id="search-button" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+
+            
+            
+            <div
+                class="ltr:mr-14 rtl:ml-14 flex items-center">
+                <button id="appearance-switcher" aria-label="Dark mode switcher" type="button" class="text-base hover:text-primary-600 dark:hover:text-primary-400">
+                    <div class="flex items-center justify-center dark:hidden">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                    </div>
+                    <div class="items-center justify-center hidden dark:flex">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                    </div>
+                </button>
+            </div>
+            
+
+        </nav>
+        <div class="flex md:hidden items-center space-x-5 md:ml-12 h-12">
+
+            <span></span>
+
+            
+
+
+            
+            <button id="search-button-mobile" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+            
+            
+            <button id="appearance-switcher-mobile" aria-label="Dark mode switcher" type="button" class="text-base hover:text-primary-600 dark:hover:text-primary-400" style="margin-right:5px">
+                <div class="flex items-center justify-center dark:hidden">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                </div>
+                <div class="items-center justify-center hidden dark:flex">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                </div>
+            </button>
+            
+
+        </div>
+    </div>
+    <div class="-my-2 -mr-2 md:hidden">
+
+        <label id="menu-button" for="menu-controller" class="block">
+            <input type="checkbox" id="menu-controller" class="hidden" />
+            
+            <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+
+  </span>
+
+
+            </div>
+            <div id="menu-wrapper" style="padding-top:5px;"
+                class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50">
+                <ul
+                    class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+                    <li>
+                        <span
+                            class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+</span>
+                    </li>
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/posts/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-bg font-bg" title="">
+            Posts
+        </p>
+    </a>
+</li>
+
+
+
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="https://github.com/flux9-org"  target="_blank"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <div >
+            
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+
+        </div>
+        
+        <p class="text-bg font-bg" title="">
+            
+        </p>
+    </a>
+</li>
+
+
+
+
+                    
+
+                </ul>
+                
+                
+
+            </div>
+        </label>
+    </div>
+</div>
+
+
+
+
+
+  </div>
+</div>
+<script>
+  window.addEventListener('scroll', function (e) {
+    var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    var background_blur = document.getElementById('menu-blur');
+    background_blur.style.opacity = (scroll / 300);
+  });
+</script>
+
+  
+  <div class="relative flex flex-col grow">
+    <main id="main-content" class="grow">
+      
+
+
+<article>
+  
+
+  <header id="single_header" class="mt-5 max-w-prose">
+    
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      How I use Neovim and Tmux for Embedded Development
+    </h1>
+    <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+      
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2024-08-16 00:00:00 &#43;0000 UTC">16 August 2024</time><span class="px-2 text-primary-500">&middot;</span><span>1538 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">8 mins</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+    
+    
+
+    
+
+    
+      
+      
+        
+        
+<div class="flex author">
+  
+    
+    
+      
+    
+    
+      
+        
+      
+      <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
+      alt="Flux9" src="/flux9_labs_logo_hu7641102360640218456.jpeg" />
+    
+  
+  <div class="place-self-center">
+    
+    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+      Author
+    </div>
+    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+      Flux9
+    </div>
+    
+    
+    <div class="text-2xl sm:text-lg">
+</div>
+  </div>
+</div>
+
+      
+
+      
+
+      
+      <div class="mb-5"></div>
+      
+
+    
+
+  </header>
+  
+  <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+    
+    
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+        
+
+
+        <div class="article-content max-w-prose mb-20">
+          
+
+<h2 class="relative group">Neovim and Tmux Setup 
+    <div id="neovim-and-tmux-setup" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#neovim-and-tmux-setup" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>This page goes over a Neovim and Tmux setup with some specifics for microcontroller development with platformio. It&rsquo;s a personalised setup that I&rsquo;ve found works for me for fast code editing and file movement. This setup can also be used for a wide variety of languages and frameworks in web development etc.</p>
+<p>
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        loading="lazy"
+        srcset="
+        /posts/neovim-setup/featured_hu7722078190025693468.png 330w,
+        /posts/neovim-setup/featured_hu12606925495043750741.png 660w,
+        /posts/neovim-setup/featured_hu14918122323000015009.png 1024w,
+        /posts/neovim-setup/featured_hu13426748833534406575.png 2x"
+        src="/posts/neovim-setup/featured_hu12606925495043750741.png"
+        alt="Featured"
+      />
+      
+    </figure>
+</p>
+
+
+<h3 class="relative group">Neovim with Clangd LSP (With ESP32 Support) 
+    <div id="neovim-with-clangd-lsp-with-esp32-support" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#neovim-with-clangd-lsp-with-esp32-support" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>I&rsquo;m using <a href="https://github.com/AstroNvim/AstroNvim" target="_blank">AstroNvim</a> as a base config.</p>
+<p>In the Neovim community there is some argument over using a distro like AstroNvim or not. My view on it is that I don&rsquo;t overly care about how to make my editor look nice, or how to setup gitsigns, or which Lua plugins are popular and effective currently. For me AstroNvim handles all of that by default. I remove plugins I don&rsquo;t need like the landing screen <code>{ &quot;goolord/alpha-nvim&quot;, enabled = false }</code>.</p>
+<p>Running your own configuration can clearly give you much better understanding and control over your editor and that is fair if you want or need that.</p>
+<p>Starting on relevant parts of the config. Some overall vim options, no mouse, and relativenumbers so you can do operations like <code>14k</code> to jump up to a specific line 14 above current:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span><span style="color:#75715e">---@type LazySpec</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;AstroNvim/astrocore&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">---@type AstroCoreOpts</span>
+</span></span><span style="display:flex;"><span>		options <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>			opt <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>				relativenumber <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>				number <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>				spell <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>				signcolumn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;auto&#34;</span>,
+</span></span><span style="display:flex;"><span>				wrap <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>				mouse <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>			},
+</span></span><span style="display:flex;"><span>		},
+</span></span><span style="display:flex;"><span>	  ...
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>So onto the actual specific configuration for Platformio C/C++. With Mason specify the <code>clangd</code> language server:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;williamboman/mason-lspconfig.nvim&#34;</span>,
+</span></span><span style="display:flex;"><span>    opts <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(_, opts)
+</span></span><span style="display:flex;"><span>      opts.ensure_installed <span style="color:#f92672">=</span> require(<span style="color:#e6db74">&#34;astrocore&#34;</span>).list_insert_unique(opts.ensure_installed, {
+</span></span><span style="display:flex;"><span>        ...
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;clangd&#34;</span>,
+</span></span><span style="display:flex;"><span>        ...
+</span></span><span style="display:flex;"><span>      })
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>If your distro has a <code>clangd</code> installation binary in its package manager(On Fedora <code>sudo dnf install clang-extra-tools -y</code>) then you you can add it to a <code>cmd</code> configuration with a permissive <code>--query-driver</code> setting:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;AstroNvim/astrolsp&#34;</span>,
+</span></span><span style="display:flex;"><span>		clangd <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>			cmd <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>				<span style="color:#e6db74">&#34;clangd&#34;</span>,
+</span></span><span style="display:flex;"><span>				<span style="color:#e6db74">&#34;--query-driver=**&#34;</span>,
+</span></span><span style="display:flex;"><span>			},
+</span></span><span style="display:flex;"><span>			capabilities <span style="color:#f92672">=</span> { offsetEncoding <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;utf-8&#34;</span> },
+</span></span><span style="display:flex;"><span>		},
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Now in each Platformio project you need to run <code>platformio run -t compiledb</code> everytime you add a new dependency and the LSP should function fine. Without doing this there is no <code>compile_commands.json</code> file generated and the Clangd LSP doesn&rsquo;t work correctly as it doesn&rsquo;t have the information it needs to compile the microcontroller code.</p>
+<p>Specific for ESP32, If this approach of a default clangd binary and permissive query-driver doesn&rsquo;t work for you, can also try building the <code>xtensa_clangd</code> and add that to your LSP <code>cmd</code>: <a href="https://github.com/espressif/esp-idf/issues/6721#issuecomment-997150632" target="_blank">https://github.com/espressif/esp-idf/issues/6721#issuecomment-997150632</a></p>
+<p>In the same github issue there is people who have as good LSP support just with setting a permissive query-driver and that is the approach I&rsquo;m using: <a href="https://github.com/espressif/esp-idf/issues/6721#issuecomment-1593710089" target="_blank">https://github.com/espressif/esp-idf/issues/6721#issuecomment-1593710089</a></p>
+
+
+<h4 class="relative group">Opening files: Using Neotree with Vim-keybind Pane Movements and Telescope 
+    <div id="opening-files-using-neotree-with-vim-keybind-pane-movements-and-telescope" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#opening-files-using-neotree-with-vim-keybind-pane-movements-and-telescope" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>There are more advanced methods of moving around in files like ThePrimeagens harpoon: <a href="https://github.com/ThePrimeagen/harpoon" target="_blank">https://github.com/ThePrimeagen/harpoon</a>.</p>
+<p>I&rsquo;ve found that a combination of Neotree with Telescope to find files can also work well with little mental overhead required. If you don&rsquo;t know exactly the name of the file, you just navigate to it using Neotree, and if you do know the name you use Telescope.</p>
+<p>Vim-keybind movements between panes by setting your mappings as follows with <code>s</code> as a prefix. <code>s</code> is an inbuilt vim operation for substituion but it&rsquo;s not that useful as a keybind(<code>r</code> and <code>R</code> work fine) so can be overridden:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>mappings <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>	[<span style="color:#e6db74">&#34;&lt;SPACE&gt;&#34;</span>] <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;&lt;Nop&gt;&#34;</span> },
+</span></span><span style="display:flex;"><span>	[<span style="color:#e6db74">&#34;s&#34;</span>] <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;&lt;Nop&gt;&#34;</span> },
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">-- astro defaults overrides these to gj, just use gj for moving in-between wrapped lines</span>
+</span></span><span style="display:flex;"><span>	[<span style="color:#e6db74">&#34;j&#34;</span>] <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;j&#34;</span> },
+</span></span><span style="display:flex;"><span>	[<span style="color:#e6db74">&#34;k&#34;</span>] <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;k&#34;</span> },
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">-- vertical movement</span>
+</span></span><span style="display:flex;"><span>	[<span style="color:#e6db74">&#34;&lt;C-d&gt;&#34;</span>] <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;&lt;C-d&gt;zz&#34;</span> },
+</span></span><span style="display:flex;"><span>	[<span style="color:#e6db74">&#34;&lt;C-u&gt;&#34;</span>] <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;&lt;C-u&gt;zz&#34;</span> },
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">-- pane movement</span>
+</span></span><span style="display:flex;"><span>	[<span style="color:#e6db74">&#34;sh&#34;</span>] <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;&lt;C-w&gt;h&#34;</span> },
+</span></span><span style="display:flex;"><span>	[<span style="color:#e6db74">&#34;sl&#34;</span>] <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;&lt;C-w&gt;l&#34;</span> },
+</span></span><span style="display:flex;"><span>	[<span style="color:#e6db74">&#34;sk&#34;</span>] <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;&lt;C-w&gt;k&#34;</span> },
+</span></span><span style="display:flex;"><span>	[<span style="color:#e6db74">&#34;sj&#34;</span>] <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;&lt;C-w&gt;j&#34;</span> },
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">-- pane splits</span>
+</span></span><span style="display:flex;"><span>	[<span style="color:#e6db74">&#34;sy&#34;</span>] <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;:vsplit&lt;CR&gt;&#34;</span> },
+</span></span><span style="display:flex;"><span>	[<span style="color:#e6db74">&#34;su&#34;</span>] <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;:split&lt;CR&gt;&#34;</span> },
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">-- PLUGINS</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">-- telescope</span>
+</span></span><span style="display:flex;"><span>	[<span style="color:#e6db74">&#34;&lt;Leader&gt;a&#34;</span>] <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;:Telescope find_files&lt;CR&gt;&#34;</span> },
+</span></span><span style="display:flex;"><span>	[<span style="color:#e6db74">&#34;&lt;Leader&gt;s&#34;</span>] <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;:Telescope live_grep&lt;CR&gt;&#34;</span> },
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Neotree configuration to open automatically:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span><span style="color:#75715e">-- open neo-tree on startup</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">local</span> neo_tree_group <span style="color:#f92672">=</span> vim.api.nvim_create_augroup(<span style="color:#e6db74">&#34;neo_tree_group&#34;</span>, { clear <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span> })
+</span></span><span style="display:flex;"><span>vim.api.nvim_create_autocmd(<span style="color:#e6db74">&#34;VimEnter&#34;</span>, {
+</span></span><span style="display:flex;"><span>	command <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;lua vim.defer_fn(function() vim.cmd(&#39;Neotree show left&#39;) end, 10)&#34;</span>,
+</span></span><span style="display:flex;"><span>	group <span style="color:#f92672">=</span> neo_tree_group,
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><p>Neotree configuration:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span><span style="color:#75715e">---@type LazySpec</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- NOTE: in future might try to enable horizontal scrolling because names get cut-off, see: https://github.com/nvim-neo-tree/neo-tree.nvim/discussions/267</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- see: https://github.com/nvim-neo-tree/neo-tree.nvim/issues/348</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;neo-tree.nvim&#34;</span>,
+</span></span><span style="display:flex;"><span>    lazy <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>    opts <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      window <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        position <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;left&#34;</span>,
+</span></span><span style="display:flex;"><span>        width <span style="color:#f92672">=</span> <span style="color:#ae81ff">32</span>,
+</span></span><span style="display:flex;"><span>        mappings <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">-- unbind &#39;s&#39; as its used for movement</span>
+</span></span><span style="display:flex;"><span>          [<span style="color:#e6db74">&#34;s&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>          [<span style="color:#e6db74">&#34;o&#34;</span>] <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;open&#34;</span>, nowait <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span> },
+</span></span><span style="display:flex;"><span>          [<span style="color:#e6db74">&#34;oc&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;noop&#34;</span>,
+</span></span><span style="display:flex;"><span>          [<span style="color:#e6db74">&#34;od&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;noop&#34;</span>,
+</span></span><span style="display:flex;"><span>          [<span style="color:#e6db74">&#34;og&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;noop&#34;</span>,
+</span></span><span style="display:flex;"><span>          [<span style="color:#e6db74">&#34;om&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;noop&#34;</span>,
+</span></span><span style="display:flex;"><span>          [<span style="color:#e6db74">&#34;on&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;noop&#34;</span>,
+</span></span><span style="display:flex;"><span>          [<span style="color:#e6db74">&#34;os&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;noop&#34;</span>,
+</span></span><span style="display:flex;"><span>          [<span style="color:#e6db74">&#34;ot&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;noop&#34;</span>,
+</span></span><span style="display:flex;"><span>          [<span style="color:#e6db74">&#34;f&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;open_vsplit&#34;</span>,
+</span></span><span style="display:flex;"><span>          [<span style="color:#e6db74">&#34;/&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;filter_on_submit&#34;</span>,
+</span></span><span style="display:flex;"><span>          [<span style="color:#e6db74">&#34;T&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;clear_filter&#34;</span>,
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      filesystem <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        filtered_items <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">-- show hidden files and filtered items</span>
+</span></span><span style="display:flex;"><span>          visible <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      event_handlers <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>          event <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;neo_tree_buffer_enter&#34;</span>,
+</span></span><span style="display:flex;"><span>          handler <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>()
+</span></span><span style="display:flex;"><span>            vim.cmd(<span style="color:#e6db74">[[
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                setlocal number
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                setlocal relativenumber
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              ]]</span>)
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">end</span>,
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>And optionally a telescope plugin configuration for navigating in results:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;telescope.nvim&#34;</span>,
+</span></span><span style="display:flex;"><span>    lazy <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>    opts <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>()
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">local</span> actions <span style="color:#f92672">=</span> require(<span style="color:#e6db74">&#34;telescope.actions&#34;</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        defaults <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>          path_display <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;truncate&#34;</span> },
+</span></span><span style="display:flex;"><span>          sorting_strategy <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ascending&#34;</span>,
+</span></span><span style="display:flex;"><span>          layout_config <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>            horizontal <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>              prompt_position <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;top&#34;</span>,
+</span></span><span style="display:flex;"><span>              preview_width <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.55</span>,
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            vertical <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>              mirror <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            width <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.87</span>,
+</span></span><span style="display:flex;"><span>            height <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.80</span>,
+</span></span><span style="display:flex;"><span>            preview_cutoff <span style="color:#f92672">=</span> <span style="color:#ae81ff">120</span>,
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>          mappings <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>            i <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>              [<span style="color:#e6db74">&#34;&lt;C-n&gt;&#34;</span>] <span style="color:#f92672">=</span> actions.cycle_history_next,
+</span></span><span style="display:flex;"><span>              [<span style="color:#e6db74">&#34;&lt;C-p&gt;&#34;</span>] <span style="color:#f92672">=</span> actions.cycle_history_prev,
+</span></span><span style="display:flex;"><span>              [<span style="color:#e6db74">&#34;&lt;C-j&gt;&#34;</span>] <span style="color:#f92672">=</span> actions.move_selection_next,
+</span></span><span style="display:flex;"><span>              [<span style="color:#e6db74">&#34;&lt;C-k&gt;&#34;</span>] <span style="color:#f92672">=</span> actions.move_selection_previous,
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            n <span style="color:#f92672">=</span> { [<span style="color:#e6db74">&#34;q&#34;</span>] <span style="color:#f92672">=</span> actions.close },
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>          file_ignore_patterns <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;.git/&#34;</span>,
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">-- custom changes to vimgrep, not in AstroNvim defaults</span>
+</span></span><span style="display:flex;"><span>          vimgrep_arguments <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;rg&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;--color=never&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;--no-heading&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;--with-filename&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;--line-number&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;--column&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;--smart-case&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;--hidden&#34;</span>,
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>With all of this configured if you can type <code>sh</code> in vim normal mode(not insert) the cursor will jump to the NeoTree pane and you can move about, use <code>o</code> or <code>Enter</code> to open directories and files. Use <code>f</code> on a highlighted file to open it in a vertical split and keep the current pane open to edit 2 files or more with each visible.</p>
+<p>Then if you have a large codebase with a deep directory structure(Java&hellip;) then using NeoTree and opening each directory can become tedious, instead use <code>&lt;leader&gt;a</code>(leader is space by default in AstroNvim) in normal mode and type part of the filename. Use vim-like <code>&lt;Ctrl&gt;-j</code> to move down in results, <code>Enter</code> to open in current pane or <code>&lt;Ctrl&gt;-v</code> to open in a vertical split. Alternatively use <code>&lt;leader&gt;s</code> to search for specific text within files instead of filenames.</p>
+
+
+<h3 class="relative group">Tmux for terminal panes 
+    <div id="tmux-for-terminal-panes" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#tmux-for-terminal-panes" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>With Neovim configured you have a system for editing code quickly. Very often though you need to run shell commands such as <code>pio run -t upload</code>, or ssh into a remote system, etc. There are some Neovim in-built terminal systems but I find that they just can&rsquo;t replicate using Tmux which naturally keeps your Neovim pane totally separate from your terminal pane.</p>
+<p>Here is an example Tmux configuration, also with Vim-like keybinds after you use the prefix <code>&lt;Ctrl-b&gt;</code>, so <code>&lt;Ctrl-b&gt;j</code> to move to the terminal pane you&rsquo;ve open below the Neovim pane:</p>
+<pre tabindex="0"><code># Set &#39;v&#39; for vertical and &#39;h&#39; for horizontal split
+bind y split-window -h -c &#34;#{pane_current_path}&#34;
+bind -r u split-window -v -c &#34;#{pane_current_path}&#34;
+bind -r * split-window -v -l 30% -c &#34;#{pane_current_path}&#34;
+
+# vim-like pane switching
+bind -r k select-pane -U
+bind -r j select-pane -D
+bind -r h select-pane -L
+bind -r l select-pane -R
+
+# vim-like pane resizing
+bind -r C-k resize-pane -U
+bind -r C-j resize-pane -D
+bind -r C-h resize-pane -L
+bind -r C-l resize-pane -R
+
+# remove default binding since replacing
+unbind %
+unbind Up
+unbind Down
+unbind Left
+unbind Right
+
+unbind C-Up
+unbind C-Down
+unbind C-Left
+unbind C-Right
+
+# Enter Tmux copy-mode with ctrl-b [, then hit &#39;v&#39; to enter visual mode, then &#39;y&#39; to yank
+# Now to paste we hit ctrl-b P
+bind P paste-buffer
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+bind-key -T copy-mode-vi y send-keys -X copy-selection
+bind-key -T copy-mode-vi r send-keys -X rectangle-toggle
+
+# Fix colours in Neovim being different in Tmux
+set -g default-terminal &#34;screen-256color&#34;
+set -ga terminal-overrides &#34;,*256col*:Tc&#34;
+
+# Increase scrollback
+set-option -g history-limit 8000
+
+# Plugin List
+set -g @plugin &#39;tmux-plugins/tpm&#39;
+# set -g @plugin &#39;arcticicestudio/nord-tmux&#39;
+set -g @plugin &#39;catppuccin/tmux&#39;
+# set -g @catppuccin_flavour &#39;frappe&#39;
+set -g @catppuccin_flavour &#39;macchiato&#39;
+
+# trigger plugin installs with &lt;prefix&gt;I
+run &#39;~/.tmux/plugins/tpm/tpm&#39;
+</code></pre><p>Now when you want to start development in a directory, open a shell there, see the <a href="https://github.com/agkozak/zsh-z" target="_blank">zsh-z</a> plugin which can save a ton of time instead of typing out full <code>cd</code> commands each time.</p>
+<p>Then use commands <code>tmux</code>, <code>nvim</code> and <code>&lt;Ctrl-b&gt;*</code> to open a bottom terminal pane. With this now you can edit code in the directory in the top pane, and in the smaller bottom pane jump down to it with <code>&lt;Ctrl-b&gt;j</code>, run a commands, and back up to Neovim with <code>&lt;Ctrl-b&gt;k</code>.</p>
+<p>Then to go further with Tmux you can easily create new full windows(a set of panes) with <code>&lt;Ctrl-b&gt;c</code> and move between them with <code>&lt;Ctrl-b&gt;n</code>. This becomes very useful if you need to be ssh&rsquo;d into a remote server to run some commands in one window while also editing some code in the previous window.</p>
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+        
+
+          
+      </div>
+     
+      
+      
+        
+        
+          
+          
+        
+      <script>
+        var oid = "views_posts\/neovim-setup\/index.md"
+        var oid_likes = "likes_posts\/neovim-setup\/index.md"
+      </script>
+      
+      
+      <script type="text/javascript" src="/js/page.min.0860cf4e04fa2d72cc33ddba263083464d48f67de06114529043cb4623319efed4f484fd7f1730df5abea0e2da6f3538855634081d02f2d6e920b956f063e823.js" integrity="sha512-CGDPTgT6LXLMM926JjCDRk1I9n3gYRRSkEPLRiMxnv7U9IT9fxcw31q&#43;oOLabzU4hVY0CB0C8tbpILlW8GPoIw=="></script>
+      
+  
+    </section>
+  <footer class="pt-8 max-w-prose print:hidden">
+
+    
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="flex group mr-3" href="/posts/second-post/">
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Second Post</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2024-05-24 16:19:47 &#43;0100 BST">24 May 2024</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+    
+  </footer>
+</article>
+
+      <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0">
+  <a href="#the-top"
+    class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top" title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+    </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+  
+  <div class="flex items-center justify-between">
+
+    
+    
+    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+      &copy;
+      2024
+      Flux9
+    </p>
+    
+
+    
+    
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      
+      
+      Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://blowfish.page/" target="_blank" rel="noopener noreferrer">Blowfish</a>
+    </p>
+    
+
+  </div>
+  <script>
+    
+    mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+      margin: 24,
+      background: 'rgba(0,0,0,0.5)',
+      scrollOffset: 0,
+    })
+    
+  </script>
+  
+  
+  <script type="text/javascript" src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js" integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
+  
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
+  data-url="http://localhost:1313/"
+  style="z-index:500"
+>
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)"
+      >
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+  </div>
+</body>
+
+</html>

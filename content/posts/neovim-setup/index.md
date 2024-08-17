@@ -1,5 +1,5 @@
 ---
-title: "Neovim and Tmux Developer Setup for Platformio"
+title: "How I use Neovim and Tmux for Embedded Development"
 date: 2024-08-16
 draft: false
 summary: "Neovim Developer Setup for Platformio"
@@ -8,6 +8,8 @@ tags: ["developer_env"]
 
 ## Neovim and Tmux Setup
 This page goes over a Neovim and Tmux setup with some specifics for microcontroller development with platformio. It's a personalised setup that I've found works for me for fast code editing and file movement. This setup can also be used for a wide variety of languages and frameworks in web development etc.
+
+![Featured](featured.png)
 
 ### Neovim with Clangd LSP (With ESP32 Support)
 I'm using [AstroNvim](https://github.com/AstroNvim/AstroNvim) as a base config.
@@ -72,7 +74,8 @@ return {
 Now in each Platformio project you need to run `platformio run -t compiledb` everytime you add a new dependency and the LSP should function fine. Without doing this there is no `compile_commands.json` file generated and the Clangd LSP doesn't work correctly as it doesn't have the information it needs to compile the microcontroller code.
 
 Specific for ESP32, If this approach of a default clangd binary and permissive query-driver doesn't work for you, can also try building the `xtensa_clangd` and add that to your LSP `cmd`: https://github.com/espressif/esp-idf/issues/6721#issuecomment-997150632
-In the same github issue there is people who have as good LSP support just with the permissive query-driver: https://github.com/espressif/esp-idf/issues/6721#issuecomment-1593710089
+
+In the same github issue there is people who have as good LSP support just with setting a permissive query-driver and that is the approach I'm using: https://github.com/espressif/esp-idf/issues/6721#issuecomment-1593710089
 
 #### Opening files: Using Neotree with Vim-keybind Pane Movements and Telescope
 There are more advanced methods of moving around in files like ThePrimeagens harpoon: https://github.com/ThePrimeagen/harpoon. 
@@ -302,8 +305,3 @@ Now when you want to start development in a directory, open a shell there, see t
 Then use commands `tmux`, `nvim` and `<Ctrl-b>*` to open a bottom terminal pane. With this now you can edit code in the directory in the top pane, and in the smaller bottom pane jump down to it with `<Ctrl-b>j`, run a commands, and back up to Neovim with `<Ctrl-b>k`.
 
 Then to go further with Tmux you can easily create new full windows(a set of panes) with `<Ctrl-b>c` and move between them with `<Ctrl-b>n`. This becomes very useful if you need to be ssh'd into a remote server to run some commands in one window while also editing some code in the previous window.
-
-## Image
-An example image, can see some LSP errors present in dependencies(seems near unavoidable even with `clangd_xtensa`), and a bottom tmux pane where you can run bash or zsh shell commands:
-
-![example_image](../../../assets/neovim_tmux_example.png)

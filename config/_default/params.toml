@@ -1,3 +1,5 @@
+colorScheme = "fire"
+
 [homepage]
   showRecent = true
   showRecentItems = 6

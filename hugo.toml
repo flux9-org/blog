@@ -2,5 +2,4 @@ baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'Flux9'
 theme = 'blowfish'
-colorScheme = "fire"
 defaultAppearance = 'dark'

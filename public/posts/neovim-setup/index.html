@@ -104,7 +104,7 @@
     "keywords": ["developer_env"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1538"
+    "wordCount": "1521"
   }]
   </script>
 
@@ -465,7 +465,7 @@
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-08-16 00:00:00 &#43;0000 UTC">16 August 2024</time><span class="px-2 text-primary-500">&middot;</span><span>1538 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">8 mins</span>
+  <time datetime="2024-08-16 00:00:00 &#43;0000 UTC">16 August 2024</time><span class="px-2 text-primary-500">&middot;</span><span>1521 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">8 mins</span>
   
 
   
@@ -536,7 +536,119 @@
   
   <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
     
-    
+     <div
+      class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
+      <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
+
+         <details open id="TOCView"
+  class="toc-right mt-0 overflow-y-scroll overscroll-contain scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#neovim-with-clangd-lsp">Neovim with Clangd LSP</a>
+      <ul>
+        <li><a href="#finding-files">Finding Files</a></li>
+      </ul>
+    </li>
+    <li><a href="#tmux-for-terminal-panes">Tmux for terminal panes</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#neovim-with-clangd-lsp">Neovim with Clangd LSP</a>
+      <ul>
+        <li><a href="#finding-files">Finding Files</a></li>
+      </ul>
+    </li>
+    <li><a href="#tmux-for-terminal-panes">Tmux for terminal panes</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+<script>
+
+  var margin = 200;
+  var marginError = 50;
+
+  (function () {
+    var $window = $(window);
+    var $toc = $('#TOCView');
+    var tocHeight = $toc.height();
+
+    function onResize() {
+      var windowAndMarginHeight = $window.height() - margin;
+      if(tocHeight >= windowAndMarginHeight) {
+        $toc.css("overflow-y", "scroll")
+        $toc.css("max-height", (windowAndMarginHeight + marginError) + "px")
+      } else {
+        $toc.css("overflow-y", "hidden")
+        $toc.css("max-height", "9999999px")
+      }
+    }
+
+    $window.on('resize', onResize);
+    $(document).ready(onResize);
+  })();
+
+
+
+  (function () {
+    var $toc = $('#TableOfContents');
+    if ($toc.length > 0) {
+      var $window = $(window);
+
+      function onScroll() {
+        var currentScroll = $window.scrollTop();
+        var h = $('.anchor');
+        var id = "";
+        h.each(function (i, e) {
+          e = $(e);
+          if (e.offset().top - $(window).height()/3 <= currentScroll) {
+            id = decodeURIComponent(e.attr('id'));
+          }
+        });
+        var active = $toc.find('a.active');      
+        if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
+
+        active.each(function (i, e) {
+          
+            $(e).removeClass('active');
+          
+        });
+        $toc.find('a[href="#' + id + '"]').addClass('active')
+        $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+          $(e).children('a').parents('ul').show();          
+        });
+      }
+
+      $window.on('scroll', onScroll);
+      $(document).ready(function () {
+        
+        onScroll();
+      });
+    }
+  })();
+
+
+</script>
+   </div>
+      </div>
+      
 
       <div class="min-w-0 min-h-0 max-w-fit">
         
@@ -544,19 +656,7 @@
 
 
         <div class="article-content max-w-prose mb-20">
-          
-
-<h2 class="relative group">Neovim and Tmux Setup 
-    <div id="neovim-and-tmux-setup" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#neovim-and-tmux-setup" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<p>This page goes over a Neovim and Tmux setup with some specifics for microcontroller development with platformio. It&rsquo;s a personalised setup that I&rsquo;ve found works for me for fast code editing and file movement. This setup can also be used for a wide variety of languages and frameworks in web development etc.</p>
+          <p>This page goes over a Neovim and Tmux setup with some specifics for microcontroller development with platformio. It&rsquo;s a personalised setup that I&rsquo;ve found works for me for fast code editing and file movement. This setup can also be used for a wide variety of languages and frameworks in web development etc.</p>
 <p>
     <figure>
       <img
@@ -575,16 +675,16 @@
 </p>
 
 
-<h3 class="relative group">Neovim with Clangd LSP (With ESP32 Support) 
-    <div id="neovim-with-clangd-lsp-with-esp32-support" class="anchor"></div>
+<h2 class="relative group">Neovim with Clangd LSP 
+    <div id="neovim-with-clangd-lsp" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#neovim-with-clangd-lsp-with-esp32-support" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#neovim-with-clangd-lsp" aria-label="Anchor">#</a>
     </span>        
     
-</h3>
+</h2>
 <p>I&rsquo;m using <a href="https://github.com/AstroNvim/AstroNvim" target="_blank">AstroNvim</a> as a base config.</p>
 <p>In the Neovim community there is some argument over using a distro like AstroNvim or not. My view on it is that I don&rsquo;t overly care about how to make my editor look nice, or how to setup gitsigns, or which Lua plugins are popular and effective currently. For me AstroNvim handles all of that by default. I remove plugins I don&rsquo;t need like the landing screen <code>{ &quot;goolord/alpha-nvim&quot;, enabled = false }</code>.</p>
 <p>Running your own configuration can clearly give you much better understanding and control over your editor and that is fair if you want or need that.</p>
@@ -630,21 +730,21 @@
 </span></span><span style="display:flex;"><span>		},
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Now in each Platformio project you need to run <code>platformio run -t compiledb</code> everytime you add a new dependency and the LSP should function fine. Without doing this there is no <code>compile_commands.json</code> file generated and the Clangd LSP doesn&rsquo;t work correctly as it doesn&rsquo;t have the information it needs to compile the microcontroller code.</p>
-<p>Specific for ESP32, If this approach of a default clangd binary and permissive query-driver doesn&rsquo;t work for you, can also try building the <code>xtensa_clangd</code> and add that to your LSP <code>cmd</code>: <a href="https://github.com/espressif/esp-idf/issues/6721#issuecomment-997150632" target="_blank">https://github.com/espressif/esp-idf/issues/6721#issuecomment-997150632</a></p>
+<p>Specific for ESP32, If this approach of a default clangd binary and permissive query-driver doesn&rsquo;t work for you, can also try building the <code>xtensa_clangd</code> and add that to your LSP <code>cmd</code>: <a href="https://github.com/espressif/esp-idf/issues/6722#issuecomment-997150632" target="_blank">https://github.com/espressif/esp-idf/issues/6722#issuecomment-997150632</a></p>
 <p>In the same github issue there is people who have as good LSP support just with setting a permissive query-driver and that is the approach I&rsquo;m using: <a href="https://github.com/espressif/esp-idf/issues/6721#issuecomment-1593710089" target="_blank">https://github.com/espressif/esp-idf/issues/6721#issuecomment-1593710089</a></p>
 
 
-<h4 class="relative group">Opening files: Using Neotree with Vim-keybind Pane Movements and Telescope 
-    <div id="opening-files-using-neotree-with-vim-keybind-pane-movements-and-telescope" class="anchor"></div>
+<h3 class="relative group">Finding Files 
+    <div id="finding-files" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#opening-files-using-neotree-with-vim-keybind-pane-movements-and-telescope" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#finding-files" aria-label="Anchor">#</a>
     </span>        
     
-</h4>
-<p>There are more advanced methods of moving around in files like ThePrimeagens harpoon: <a href="https://github.com/ThePrimeagen/harpoon" target="_blank">https://github.com/ThePrimeagen/harpoon</a>.</p>
+</h3>
+<p>There are more advanced methods of moving around different files like <a href="https://github.com/ThePrimeagen/harpoon" target="_blank">ThePrimeagens harpoon</a>.</p>
 <p>I&rsquo;ve found that a combination of Neotree with Telescope to find files can also work well with little mental overhead required. If you don&rsquo;t know exactly the name of the file, you just navigate to it using Neotree, and if you do know the name you use Telescope.</p>
 <p>Vim-keybind movements between panes by setting your mappings as follows with <code>s</code> as a prefix. <code>s</code> is an inbuilt vim operation for substituion but it&rsquo;s not that useful as a keybind(<code>r</code> and <code>R</code> work fine) so can be overridden:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>mappings <span style="color:#f92672">=</span> {
@@ -787,7 +887,7 @@
 <p>Then if you have a large codebase with a deep directory structure(Java&hellip;) then using NeoTree and opening each directory can become tedious, instead use <code>&lt;leader&gt;a</code>(leader is space by default in AstroNvim) in normal mode and type part of the filename. Use vim-like <code>&lt;Ctrl&gt;-j</code> to move down in results, <code>Enter</code> to open in current pane or <code>&lt;Ctrl&gt;-v</code> to open in a vertical split. Alternatively use <code>&lt;leader&gt;s</code> to search for specific text within files instead of filenames.</p>
 
 
-<h3 class="relative group">Tmux for terminal panes 
+<h2 class="relative group">Tmux for terminal panes 
     <div id="tmux-for-terminal-panes" class="anchor"></div>
     
     <span
@@ -796,7 +896,7 @@
             style="text-decoration-line: none !important;" href="#tmux-for-terminal-panes" aria-label="Anchor">#</a>
     </span>        
     
-</h3>
+</h2>
 <p>With Neovim configured you have a system for editing code quickly. Very often though you need to run shell commands such as <code>pio run -t upload</code>, or ssh into a remote system, etc. There are some Neovim in-built terminal systems but I find that they just can&rsquo;t replicate using Tmux which naturally keeps your Neovim pane totally separate from your terminal pane.</p>
 <p>Here is an example Tmux configuration, also with Vim-like keybinds after you use the prefix <code>&lt;Ctrl-b&gt;</code>, so <code>&lt;Ctrl-b&gt;j</code> to move to the terminal pane you&rsquo;ve open below the Neovim pane:</p>
 <pre tabindex="0"><code># Set &#39;v&#39; for vertical and &#39;h&#39; for horizontal split
@@ -888,43 +988,6 @@ run &#39;~/.tmux/plugins/tpm/tpm&#39;
   <footer class="pt-8 max-w-prose print:hidden">
 
     
-  
-    
-    
-    
-    <div class="pt-8">
-      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
-      <div class="flex justify-between pt-3">
-        <span>
-          
-            <a class="flex group mr-3" href="/posts/second-post/">
-              <span
-                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
-                >&larr;</span
-              >
-              <span
-                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
-                >&rarr;</span
-              >
-              <span class="flex flex-col">
-                <span
-                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >Second Post</span
-                >
-                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
-                  
-                    <time datetime="2024-05-24 16:19:47 &#43;0100 BST">24 May 2024</time>
-                  
-                </span>
-              </span>
-            </a>
-          
-        </span>
-        <span>
-          
-        </span>
-      </div>
-    </div>
   
 
 

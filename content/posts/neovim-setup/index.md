@@ -6,12 +6,11 @@ summary: "Neovim Developer Setup for Platformio"
 tags: ["developer_env"]
 ---
 
-## Neovim and Tmux Setup
 This page goes over a Neovim and Tmux setup with some specifics for microcontroller development with platformio. It's a personalised setup that I've found works for me for fast code editing and file movement. This setup can also be used for a wide variety of languages and frameworks in web development etc.
 
 ![Featured](featured.png)
 
-### Neovim with Clangd LSP (With ESP32 Support)
+## Neovim with Clangd LSP
 I'm using [AstroNvim](https://github.com/AstroNvim/AstroNvim) as a base config.
 
 In the Neovim community there is some argument over using a distro like AstroNvim or not. My view on it is that I don't overly care about how to make my editor look nice, or how to setup gitsigns, or which Lua plugins are popular and effective currently. For me AstroNvim handles all of that by default. I remove plugins I don't need like the landing screen `{ "goolord/alpha-nvim", enabled = false }`.
@@ -73,12 +72,12 @@ return {
 
 Now in each Platformio project you need to run `platformio run -t compiledb` everytime you add a new dependency and the LSP should function fine. Without doing this there is no `compile_commands.json` file generated and the Clangd LSP doesn't work correctly as it doesn't have the information it needs to compile the microcontroller code.
 
-Specific for ESP32, If this approach of a default clangd binary and permissive query-driver doesn't work for you, can also try building the `xtensa_clangd` and add that to your LSP `cmd`: https://github.com/espressif/esp-idf/issues/6721#issuecomment-997150632
+Specific for ESP32, If this approach of a default clangd binary and permissive query-driver doesn't work for you, can also try building the `xtensa_clangd` and add that to your LSP `cmd`: <https://github.com/espressif/esp-idf/issues/6722#issuecomment-997150632>
 
-In the same github issue there is people who have as good LSP support just with setting a permissive query-driver and that is the approach I'm using: https://github.com/espressif/esp-idf/issues/6721#issuecomment-1593710089
+In the same github issue there is people who have as good LSP support just with setting a permissive query-driver and that is the approach I'm using: <https://github.com/espressif/esp-idf/issues/6721#issuecomment-1593710089>
 
-#### Opening files: Using Neotree with Vim-keybind Pane Movements and Telescope
-There are more advanced methods of moving around in files like ThePrimeagens harpoon: https://github.com/ThePrimeagen/harpoon. 
+### Finding Files
+There are more advanced methods of moving around different files like [ThePrimeagens harpoon](https://github.com/ThePrimeagen/harpoon).
 
 I've found that a combination of Neotree with Telescope to find files can also work well with little mental overhead required. If you don't know exactly the name of the file, you just navigate to it using Neotree, and if you do know the name you use Telescope.
 
@@ -239,7 +238,7 @@ With all of this configured if you can type `sh` in vim normal mode(not insert) 
 
 Then if you have a large codebase with a deep directory structure(Java...) then using NeoTree and opening each directory can become tedious, instead use `<leader>a`(leader is space by default in AstroNvim) in normal mode and type part of the filename. Use vim-like `<Ctrl>-j` to move down in results, `Enter` to open in current pane or `<Ctrl>-v` to open in a vertical split. Alternatively use `<leader>s` to search for specific text within files instead of filenames.
 
-### Tmux for terminal panes
+## Tmux for terminal panes
 
 With Neovim configured you have a system for editing code quickly. Very often though you need to run shell commands such as `pio run -t upload`, or ssh into a remote system, etc. There are some Neovim in-built terminal systems but I find that they just can't replicate using Tmux which naturally keeps your Neovim pane totally separate from your terminal pane.
 
